@@ -1,20 +1,18 @@
-------- ELASTODYN v1.03.* INPUT FILE -------------------------------------------
+------- ELASTODYN for OpenFAST INPUT FILE -------------------------------------------
 NREL 5.0 MW Baseline Wind Turbine for Use in Offshore Analysis. Properties from Dutch Offshore Wind Energy Converter (DOWEC) 6MW Pre-Design (10046_009.pdf) and REpower 5M 5MW (5m_uk.pdf)
 ---------------------- SIMULATION CONTROL --------------------------------------
 False         Echo        - Echo input data to "<RootName>.ech" (flag)
           3   Method      - Integration method: {1: RK4, 2: AB4, or 3: ABM4} (-)
 "default"     DT          - Integration time step (s)
----------------------- ENVIRONMENTAL CONDITION ---------------------------------
-    9.80665   Gravity     - Gravitational acceleration (m/s^2)
 ---------------------- DEGREES OF FREEDOM --------------------------------------
 True          FlapDOF1    - First flapwise blade mode DOF (flag)
 True          FlapDOF2    - Second flapwise blade mode DOF (flag)
 True          EdgeDOF     - First edgewise blade mode DOF (flag)
 False         TeetDOF     - Rotor-teeter DOF (flag) [unused for 3 blades]
 True          DrTrDOF     - Drivetrain rotational-flexibility DOF (flag)
-True          GenDOF      - Generator DOF (flag)
+True           GenDOF      - Generator DOF (flag)
 True          YawDOF      - Yaw DOF (flag)
-True          TwFADOF1    - First fore-aft tower bending-mode DOF (flag)
+True          TwFADOF1    - First fore-aft tower bending-mode DOF (flag) !%False used when running with rigid blades and tower
 True          TwFADOF2    - Second fore-aft tower bending-mode DOF (flag)
 True          TwSSDOF1    - First side-to-side tower bending-mode DOF (flag)
 True          TwSSDOF2    - Second side-to-side tower bending-mode DOF (flag)
@@ -33,7 +31,7 @@ False         PtfmYDOF    - Platform yaw rotation DOF (flag)
           0   TeetDefl    - Initial or fixed teeter angle (degrees) [unused for 3 blades]
           0   Azimuth     - Initial azimuth angle for blade 1 (degrees)
 12.13 RotSpeed    - Initial or fixed rotor speed (rpm)
-0 NacYaw      - Initial or fixed nacelle-yaw angle (degrees)
+          0   NacYaw      - Initial or fixed nacelle-yaw angle (degrees)
           0   TTDspFA     - Initial fore-aft tower-top displacement (meters)
           0   TTDspSS     - Initial side-to-side tower-top displacement (meters)
           0   PtfmSurge   - Initial or fixed horizontal surge translational displacement of platform (meters)
@@ -84,10 +82,10 @@ False         PtfmYDOF    - Platform yaw rotation DOF (flag)
 4.22923E+09   PtfmPIner   - Platform inertia for pitch tilt rotation about the platform CM (kg m^2)
  1.6423E+08   PtfmYIner   - Platform inertia for yaw rotation about the platform CM (kg m^2)
 ---------------------- BLADE ---------------------------------------------------
-         17   BldNodes    - Number of blade nodes (per blade) used for analysis (-)
-"NREL5MW_ED_Blade.dat"    BldFile(1)  - Name of file containing properties for blade 1 (quoted string)
-"NREL5MW_ED_Blade.dat"    BldFile(2)  - Name of file containing properties for blade 2 (quoted string)
-"NREL5MW_ED_Blade.dat"    BldFile(3)  - Name of file containing properties for blade 3 (quoted string) [unused for 2 blades]
+         17  BldNodes    - Number of blade nodes (per blade) used for analysis (-)
+"../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(1)  - Name of file containing properties for blade 1 (quoted string)
+"../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(2)  - Name of file containing properties for blade 2 (quoted string)
+"../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(3)  - Name of file containing properties for blade 3 (quoted string) [unused for 2 blades]
 ---------------------- ROTOR-TEETER --------------------------------------------
           0   TeetMod     - Rotor-teeter spring/damper model {0: none, 1: standard, 2: user-defined from routine UserTeet} (switch) [unused for 3 blades]
           0   TeetDmpP    - Rotor-teeter damper position (degrees) [used only for 2 blades and when TeetMod=1]
@@ -107,18 +105,18 @@ False         Furling     - Read in additional model properties for furling turb
 "unused"      FurlFile    - Name of file containing furling properties (quoted string) [unused when Furling=False]
 ---------------------- TOWER ---------------------------------------------------
          20   TwrNodes    - Number of tower nodes used for analysis (-)
-"NREL5MW_ED_Tower_Onshore.dat"    TwrFile     - Name of file containing tower properties (quoted string)
+"../NREL5MW/NRELOffshrBsline5MW_Onshore_ElastoDyn_Tower.dat"    TwrFile     - Name of file containing tower properties (quoted string)
 ---------------------- OUTPUT --------------------------------------------------
 False          SumPrint    - Print summary data to "<RootName>.sum" (flag)
           1   OutFile     - Switch to determine where output will be placed: {1: in module output file only; 2: in glue code output file only; 3: both} (currently unused)
 True          TabDelim    - Use tab delimiters in text tabular output file? (flag) (currently unused)
 "ES10.3E2"    OutFmt      - Format used for text tabular output (except time).  Resulting field should be 10 characters. (quoted string) (currently unused)
-         30   TStart      - Time to begin tabular output (s) (currently unused)
+          0   TStart      - Time to begin tabular output (s) (currently unused)
           1   DecFact     - Decimation factor for tabular output {1: output every time step} (-) (currently unused)
-          1   NTwGages    - Number of tower nodes that have strain gages for output [0 to 9] (-)
-         10   TwrGagNd    - List of tower nodes that have strain gages [1 to TwrNodes] (-) [unused if NTwGages=0]
-          1   NBlGages    - Number of blade nodes that have strain gages for output [0 to 9] (-)
-          9   BldGagNd    - List of blade nodes that have strain gages [1 to BldNodes] (-) [unused if NBlGages=0]
+          0   NTwGages    - Number of tower nodes that have strain gages for output [0 to 9] (-)
+              TwrGagNd    - List of tower nodes that have strain gages [1 to TwrNodes] (-) [unused if NTwGages=0]
+          0   NBlGages    - Number of blade nodes that have strain gages for output [0 to 9] (-)
+              BldGagNd    - List of blade nodes that have strain gages [1 to BldNodes] (-) [unused if NBlGages=0]
               OutList     - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx for a listing of available output channels, (-)
 "BldPitch1"               - Pitch angles for blades 1, 2, and 3
 "BldPitch2"               - Pitch angles for blades 1, 2, and 3
@@ -211,4 +209,9 @@ True          TabDelim    - Use tab delimiters in text tabular output file? (fla
 "RootMyb1"
 "NcIMUTVxs"
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
----------------------------------------------------------------------------------------
+---------------------- NODE OUTPUTS --------------------------------------------
+          1   BldNd_BladesOut  - Blades to output
+         99   BldNd_BlOutNd   - Blade nodes on each blade (currently unused)
+              OutList     - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx, ElastoDyn_Nodes tab for a listing of available output channels, (-)
+END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------

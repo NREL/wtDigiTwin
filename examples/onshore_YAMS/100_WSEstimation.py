@@ -2,10 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-import weio # https://github.com/ebranlard/weio
-
-# Local 
-from wtDigiTwin.ws_estimator.tabulated import TabulatedWSEstimator
+import welib.weio as weio
+from welib.ws_estimator.tabulated import TabulatedWSEstimator
 
 IStudy=[1,3]
 
@@ -19,8 +17,8 @@ if 1 in IStudy:
     base='../../_data/NREL5MW'
     Main='../../_data/NREL5MW_SimpleSimulations/TurbWindStep_AllDOF.fst'; 
     # --- Turbine data and estimator
-    wse = TabulatedWSEstimator(fst_file=Main)
-    wse.load_files(base=base,suffix='')
+    wse = TabulatedWSEstimator(fstFile=Main)
+    wse.loadFromBasename(basename=base,suffix='')
     print(wse)
     # --- Loading data
     df = weio.read(Main.replace('.fst','.outb')).toDataFrame()
@@ -39,7 +37,7 @@ if 1 in IStudy:
     print(ws_est.shape)
     WS0=ws_ref[0]*0.9 # estimate previous time step
     for i,(Qa,p,o,ws0) in enumerate(zip(Qaero_ref,pitch,omega,ws_ref)):
-        ws_hat=wse.estimate(Qa, p, o, WS0,relaxation=relaxation)
+        ws_hat,_=wse.estimate(Qa, p, o, WS0,relaxation=relaxation)
         ws_est[i]=ws_hat
         WS0=ws_hat
         if np.mod(i,1000)==0:
@@ -54,9 +52,9 @@ if 1 in IStudy:
 if 3 in IStudy:
     base='../../_data/NREL5MW'
     #Main='../../_data/NREL5MW_SimpleSimulations/TurbWindStep_AllDOF.fst'; 
-    Main='../../_data/NREL5MW/Main_Onshore_OF2.fst'; 
-    wse = TabulatedWSEstimator(fst_file=Main)
-    wse.load_files(base=base,suffix='')
+    Main='../../_data/NREL5MW/Main.fst'; 
+    wse = TabulatedWSEstimator(fstFile=Main)
+    wse.loadFromBasename(basename=base,suffix='')
     print(wse)
 # 
 plt.show()

@@ -1,0 +1,3 @@
+[submodule "welib"]
+	path = welib
+	url = https://github.com/ebranlard/welib

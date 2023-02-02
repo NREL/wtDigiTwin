@@ -9,3 +9,4 @@ wsest/*
 *.sum
 *.echo
 
+NREL5MW_2DOF_ABCD_ws1000.dat

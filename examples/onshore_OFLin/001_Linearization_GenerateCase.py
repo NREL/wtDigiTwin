@@ -3,13 +3,13 @@ Runs a set of OpenFAST linearizations for different operating points
 """
 import numpy as np
 import os
-import weio # https://github.com/ebranlard/weio
-import wtDigiTwin.fast.fastlib as fastlib # latest fastlib is found in https://github.com/ebranlard/welib
-from  wtDigiTwin.tools.clean_exceptions import *
+import welib.weio as weio # https://github.com/ebranlard/weio
+import welib.fast.fastlib as fastlib # latest fastlib is found in https://github.com/ebranlard/welib
+from  welib.tools.clean_exceptions import *
 # --- Parameters for this script
-main_file   = 'Main_Onshore_OF2.fst'         # Main file in ref_dir, used as a template
+main_file   = 'Main.fst'         # Main file in ref_dir, used as a template
 ref_dir     = '../../_data/NREL5MW/'         # Folder where the fast input files are located (will be copied)
-FAST_EXE    = '../../_data/NREL5MW/openfast2.2_x64s.exe' # Location of a FAST exe (and dll)
+FAST_EXE    = '../../_data/openfast_x64d_v3.4.exe' # Location of a FAST exe (and dll)
 trim_points = '../../_data/NREL5MW_Oper.csv'
 work_dir    = '../../_data/NREL5MW_Linearizations/'     # Output folder (will be created)
 
@@ -81,7 +81,7 @@ for i,c in Cases.iterrows():
     p['AeroFile|WakeMod'] = 1
     p['AeroFile|AFAeroMod'] = 1
     p['AeroFile|Frozenwake'] = True
-    p['ServoFile'] = '"NREL5MW_SD_Simple.dat"'
+    p['ServoFile'] = '"NREL5MW_SvD_Simple.dat"'
     PARAMS.append(p)
 # # --- Generating all files in a workdir
 fastfiles=fastlib.templateReplace(PARAMS,ref_dir,outputDir=work_dir,removeRefSubFiles=True,main_file=main_file)

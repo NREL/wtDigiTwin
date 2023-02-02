@@ -17,21 +17,26 @@ The current version provides examples to estimate wind speed, thrust, torque, to
 
 
 ## QuickStart
+NOTE: This repository relies on the `welib` submodule, remember to include `--recurse-submodules` when cloning it. 
+
 Download, install dependencies and package:
 ```bash
-git clone https://github.com/ebranlard/wtDigiTwin
+git clone --recurse-submodules https://github.com/NREL/wtDigiTwin
 cd wtDigiTwin
 python -m pip install --user -r requirements.txt  
 python -m pip install -e .      # install
 python -m unittest discover -v  # run test
 ```
 
+
 ## Examples
 Simple working examples are provided in the example directory.
 
 
-## Packages
-The repository contains a set of small packages:
+## Relevant packages from welib
+The repository relies heavily on [welib](http://github.com/ebranlard/welib/) 
+
+In particular the following subpackages of welib:
 
 - yams: multibody analyses
 - beams: analytical results for beams

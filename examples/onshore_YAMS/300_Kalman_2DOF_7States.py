@@ -11,12 +11,20 @@ import matplotlib.pyplot as plt
 import os
 import weio # https://github.com/ebranlard/weio
 
-from wtDigiTwin.kalman.TN import KalmanFilterTN, KalmanFilterTNSim
-from wtDigiTwin.tools.colors import *
-from wtDigiTwin.tools.figure import *
-from wtDigiTwin.tools.tictoc import Timer
-from wtDigiTwin.tools.clean_exceptions import *
-from wtDigiTwin.tools.fatigue import eq_load
+# from wtDigiTwin.kalman.TN import KalmanFilterTN, KalmanFilterTNSim
+# from wtDigiTwin.tools.colors import *
+# from wtDigiTwin.tools.figure import *
+# from wtDigiTwin.tools.tictoc import Timer
+# from wtDigiTwin.tools.clean_exceptions import *
+# from wtDigiTwin.tools.fatigue import eq_load
+
+from welib.kalman.TN import KalmanFilterTN, KalmanFilterTNSim
+from welib.tools.colors import *
+from welib.tools.figure import *
+from welib.tools.tictoc import Timer
+from welib.tools.clean_exceptions import *
+from welib.tools.fatigue import eq_load
+
 
 # --- General Parameters and State specific parameters
 bThrustInStates=True
@@ -92,7 +100,7 @@ for j in [2,5]:
     print('Leq  ref: {:.2f} - est: {:.2f}'.format(Leq(KF.time,KF.M_ref[j]),Leq(KF.time,KF.M_sim[j])))
 # --- Signal-to-noise ratio
 for j,s in enumerate(KF.sY):
-    print('SNR {:s} - clean: {:.2f} - meas {:.2f} - est {:.2f}'.format(s, SNR(KF.Y_clean[j,:]), SNR(KF.Y[j,:]), SNR(KF.Y_hat[j,:])))
+    print('SNR {:s} - clean: {:.2f} - meas {:.2f} - est {:.2f}'.format(s, SNR(KF.Y_clean[s]), SNR(KF.Y[s]), SNR(KF.Y_hat[s])))
 
 # --- Compare Measurements
 KF.plot_Y()

@@ -5,8 +5,18 @@ __pycache__
 *_TODO.m
 TODO
 *TODO*
-_*
 !__init__.py
 *.pdf
+*.png
 *Copy.py
 *_dump.dat
+
+
+# OpenFAST
+*.sum
+*.outb
+*.out
+*.ech
+*.lin
+*.pkl
+
