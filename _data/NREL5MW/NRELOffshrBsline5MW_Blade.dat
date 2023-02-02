@@ -77,7 +77,7 @@ NREL 5.0 MW offshore baseline blade input properties.
      0.3627   BldEdgSh(2) - Edge mode 1, coeff of x^2
      2.5337   BldEdgSh(3) -            , coeff of x^3
     -3.5772   BldEdgSh(4) -            , coeff of x^4
-     2.3760   BldEdgSh(5) -            , coeff of x^5
+      2.376   BldEdgSh(5) -            , coeff of x^5
     -0.6952   BldEdgSh(6) -            , coeff of x^6
 
 

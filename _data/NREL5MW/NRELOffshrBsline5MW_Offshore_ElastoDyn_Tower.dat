@@ -34,11 +34,11 @@ NREL 5.0 MW offshore baseline tower input properties for the OC3-Hywind spar-buo
     -0.0908   TwFAM1Sh(4) -       , coefficient of x^4 term
      0.1167   TwFAM1Sh(5) -       , coefficient of x^5 term
     -0.1154   TwFAM1Sh(6) -       , coefficient of x^6 term
-   -42.5859   42.5859   TwFAM2Sh(2) - Mode 2, coefficient of x^2 term
-   +18.6419  -18.6419   TwFAM2Sh(3) -       , coefficient of x^3 term
-    +20.357   -20.357   TwFAM2Sh(4) -       , coefficient of x^4 term
-   +23.2686  -23.2686   TwFAM2Sh(5) -       , coefficient of x^5 term
-   -20.6816   20.6816   TwFAM2Sh(6) -       , coefficient of x^6 term
+    42.5859   TwFAM2Sh(2) - Mode 2, coefficient of x^2 term
+   -18.6419   TwFAM2Sh(3) -       , coefficient of x^3 term
+    -20.357   TwFAM2Sh(4) -       , coefficient of x^4 term
+   -23.2686   TwFAM2Sh(5) -       , coefficient of x^5 term
+    20.6816   TwFAM2Sh(6) -       , coefficient of x^6 term
 ---------------------- TOWER SIDE-TO-SIDE MODE SHAPES --------------------------
       0.834   TwSSM1Sh(2) - Mode 1, coefficient of x^2 term
      0.2216   TwSSM1Sh(3) -       , coefficient of x^3 term
