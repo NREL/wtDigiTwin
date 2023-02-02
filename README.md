@@ -17,11 +17,11 @@ The current version provides examples to estimate wind speed, thrust, torque, to
 
 
 ## QuickStart
-NOTE:
+NOTE: This repository relies on the `welib` submodule, remember to include `--recurse-submodules` when cloning it. 
 
 Download, install dependencies and package:
 ```bash
-git clone --recurse-submodules https://github.com/ebranlard/wtDigiTwin
+git clone --recurse-submodules https://github.com/NREL/wtDigiTwin
 cd wtDigiTwin
 python -m pip install --user -r requirements.txt  
 python -m pip install -e .      # install
