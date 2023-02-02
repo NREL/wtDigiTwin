@@ -9,9 +9,8 @@ import os
 import weio # https://github.com/ebranlard/weio
 
 # Local
-# from helper_functions import *
-from wtDigiTwin.fast.fastlinfiles import FASTLin
-from wtDigiTwin.tools.clean_exceptions import *
+from welib.fast.FASTLin import FASTLin
+from welib.tools.clean_exceptions import *
 
 # --- Script parameters
 bLoadAll=True
@@ -47,7 +46,7 @@ def findsignal(sL, pat):
 
 # --- Read all the linearizations from FAST
 if bLoadAll:
-    FL=FASTLin(LinFolder, prefix='ws_')
+    FL=FASTLin(folder=LinFolder, prefix='ws_')
     FL.save(LinDump)
 else:
     FL = load(LinDump.replace('.dat','.dat'))

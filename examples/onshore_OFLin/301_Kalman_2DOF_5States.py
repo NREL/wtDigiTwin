@@ -11,10 +11,14 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 from kalman_models import KalmanModel
-from wtDigiTwin.kalman.TN    import KalmanFilterTN, KalmanFilterTNSim
-from wtDigiTwin.kalman.TNLin import KalmanFilterTNLin, KalmanFilterTNLinSim
-from wtDigiTwin.tools.fatigue import eq_load
-from wtDigiTwin.tools.tictoc import Timer
+# from wtDigiTwin.kalman.TN    import KalmanFilterTN, KalmanFilterTNSim
+# from wtDigiTwin.kalman.TNLin import KalmanFilterTNLin, KalmanFilterTNLinSim
+# from wtDigiTwin.tools.fatigue import eq_load
+# from wtDigiTwin.tools.tictoc import Timer
+from welib.kalman.TN    import KalmanFilterTN, KalmanFilterTNSim
+from welib.kalman.TNLin import KalmanFilterTNLin, KalmanFilterTNLinSim
+from welib.tools.fatigue import eq_load
+from welib.tools.tictoc import Timer
 
 
 # --- General Parameters and State specific parameters

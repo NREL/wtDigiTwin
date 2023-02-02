@@ -1,18 +1,16 @@
-------- ELASTODYN v1.03.* INPUT FILE -------------------------------------------
+------- ELASTODYN for OpenFAST INPUT FILE -------------------------------------------
 NREL 5.0 MW Baseline Wind Turbine for Use in Offshore Analysis. Properties from Dutch Offshore Wind Energy Converter (DOWEC) 6MW Pre-Design (10046_009.pdf) and REpower 5M 5MW (5m_uk.pdf)
 ---------------------- SIMULATION CONTROL --------------------------------------
 False         Echo        - Echo input data to "<RootName>.ech" (flag)
           3   Method      - Integration method: {1: RK4, 2: AB4, or 3: ABM4} (-)
 "default"     DT          - Integration time step (s)
----------------------- ENVIRONMENTAL CONDITION ---------------------------------
-    9.80665   Gravity     - Gravitational acceleration (m/s^2)
 ---------------------- DEGREES OF FREEDOM --------------------------------------
 True          FlapDOF1    - First flapwise blade mode DOF (flag)
 True          FlapDOF2    - Second flapwise blade mode DOF (flag)
 True          EdgeDOF     - First edgewise blade mode DOF (flag)
 False         TeetDOF     - Rotor-teeter DOF (flag) [unused for 3 blades]
 True          DrTrDOF     - Drivetrain rotational-flexibility DOF (flag)
-True          GenDOF      - Generator DOF (flag)
+True           GenDOF      - Generator DOF (flag)
 True          YawDOF      - Yaw DOF (flag)
 True          TwFADOF1    - First fore-aft tower bending-mode DOF (flag) !%False used when running with rigid blades and tower
 True          TwFADOF2    - Second fore-aft tower bending-mode DOF (flag)
@@ -27,12 +25,12 @@ False         PtfmYDOF    - Platform yaw rotation DOF (flag)
 ---------------------- INITIAL CONDITIONS --------------------------------------
           0   OoPDefl     - Initial out-of-plane blade-tip displacement (meters)
           0   IPDefl      - Initial in-plane blade-tip deflection (meters)
-          0   BlPitch(1)  - Blade 1 initial pitch (degrees)
-          0   BlPitch(2)  - Blade 2 initial pitch (degrees)
-          0   BlPitch(3)  - Blade 3 initial pitch (degrees) [unused for 2 blades]
+7.23 BlPitch(1)  - Blade 1 initial pitch (degrees)
+7.23 BlPitch(2)  - Blade 2 initial pitch (degrees)
+7.23 BlPitch(3)  - Blade 3 initial pitch (degrees) [unused for 2 blades]
           0   TeetDefl    - Initial or fixed teeter angle (degrees) [unused for 3 blades]
           0   Azimuth     - Initial azimuth angle for blade 1 (degrees)
-         10   RotSpeed    - Initial or fixed rotor speed (rpm)
+12.13 RotSpeed    - Initial or fixed rotor speed (rpm)
           0   NacYaw      - Initial or fixed nacelle-yaw angle (degrees)
           0   TTDspFA     - Initial fore-aft tower-top displacement (meters)
           0   TTDspSS     - Initial side-to-side tower-top displacement (meters)
@@ -84,7 +82,7 @@ False         PtfmYDOF    - Platform yaw rotation DOF (flag)
 4.22923E+09   PtfmPIner   - Platform inertia for pitch tilt rotation about the platform CM (kg m^2)
  1.6423E+08   PtfmYIner   - Platform inertia for yaw rotation about the platform CM (kg m^2)
 ---------------------- BLADE ---------------------------------------------------
-         17   BldNodes    - Number of blade nodes (per blade) used for analysis (-)
+         17  BldNodes    - Number of blade nodes (per blade) used for analysis (-)
 "../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(1)  - Name of file containing properties for blade 1 (quoted string)
 "../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(2)  - Name of file containing properties for blade 2 (quoted string)
 "../NREL5MW/NRELOffshrBsline5MW_Blade.dat"    BldFile(3)  - Name of file containing properties for blade 3 (quoted string) [unused for 2 blades]
@@ -104,7 +102,7 @@ False         PtfmYDOF    - Platform yaw rotation DOF (flag)
   6.215E+06   DTTorDmp    - Drivetrain torsional damper (N-m/(rad/s))
 ---------------------- FURLING -------------------------------------------------
 False         Furling     - Read in additional model properties for furling turbine (flag) [must currently be FALSE)
-"NA"      FurlFile    - Name of file containing furling properties (quoted string) [unused when Furling=False]
+"unused"      FurlFile    - Name of file containing furling properties (quoted string) [unused when Furling=False]
 ---------------------- TOWER ---------------------------------------------------
          20   TwrNodes    - Number of tower nodes used for analysis (-)
 "../NREL5MW/NRELOffshrBsline5MW_Onshore_ElastoDyn_Tower.dat"    TwrFile     - Name of file containing tower properties (quoted string)
@@ -113,12 +111,12 @@ False          SumPrint    - Print summary data to "<RootName>.sum" (flag)
           1   OutFile     - Switch to determine where output will be placed: {1: in module output file only; 2: in glue code output file only; 3: both} (currently unused)
 True          TabDelim    - Use tab delimiters in text tabular output file? (flag) (currently unused)
 "ES10.3E2"    OutFmt      - Format used for text tabular output (except time).  Resulting field should be 10 characters. (quoted string) (currently unused)
-         30   TStart      - Time to begin tabular output (s) (currently unused)
+          0   TStart      - Time to begin tabular output (s) (currently unused)
           1   DecFact     - Decimation factor for tabular output {1: output every time step} (-) (currently unused)
-          9   NTwGages    - Number of tower nodes that have strain gages for output [0 to 9] (-)
-  1,2,4,6,8,11,15,17,20   TwrGagNd    - List of tower nodes that have strain gages [1 to TwrNodes] (-) [unused if NTwGages=0]
-          1   NBlGages    - Number of blade nodes that have strain gages for output [0 to 9] (-)
-          9   BldGagNd    - List of blade nodes that have strain gages [1 to BldNodes] (-) [unused if NBlGages=0]
+          0   NTwGages    - Number of tower nodes that have strain gages for output [0 to 9] (-)
+              TwrGagNd    - List of tower nodes that have strain gages [1 to TwrNodes] (-) [unused if NTwGages=0]
+          0   NBlGages    - Number of blade nodes that have strain gages for output [0 to 9] (-)
+              BldGagNd    - List of blade nodes that have strain gages [1 to BldNodes] (-) [unused if NBlGages=0]
               OutList     - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx for a listing of available output channels, (-)
 "BldPitch1"               - Pitch angles for blades 1, 2, and 3
 "BldPitch2"               - Pitch angles for blades 1, 2, and 3
@@ -139,33 +137,51 @@ True          TabDelim    - Use tab delimiters in text tabular output file? (fla
 "TwrClrnc1"               - Tip-to-tower clearance estimate for blades 1, 2, and 3
 "TwrClrnc2"               - Tip-to-tower clearance estimate for blades 1, 2, and 3
 "TwrClrnc3"               - Tip-to-tower clearance estimate for blades 1, 2, and 3
-"NcIMUTVxs"               - Nacelle inertial measurement unit translational velocity (absolute)
-"NcIMUTVys"               - Nacelle inertial measurement unit translational velocity (absolute)
-"NcIMUTVzs"               - Nacelle inertial measurement unit translational velocity (absolute)
 "NcIMUTAxs"               - Nacelle IMU translational accelerations (absolute) in the nonrotating, shaft coordinate system
 "NcIMUTAys"               - Nacelle IMU translational accelerations (absolute) in the nonrotating, shaft coordinate system
 "NcIMUTAzs"               - Nacelle IMU translational accelerations (absolute) in the nonrotating, shaft coordinate system
 "TTDspFA"                 - Tower fore-aft and side-to-side displacements and top twist
 "TTDspSS"                 - Tower fore-aft and side-to-side displacements and top twist
 "TTDspTwst"               - Tower fore-aft and side-to-side displacements and top twist
-"RootFxb1"                - Blade 1 Root Oop, IP, and Axial shear forces
-"RootFyb1"                - Blade 1 Root Oop, IP, and Axial shear forces
-"RootFzb1"                - Blade 1 Root Oop, IP, and Axial shear forces
-"RootMxb1"                - Blade 1 Root Oop, Ip, and Axial moments
-"RootMyb1"                - Blade 1 Root Oop, Ip, and Axial moments
-"RootMzb1"                - Blade 1 Root Oop, Ip, and Axial moments
-"RootFxb2"                - Blade 2 Root Oop, IP, and Axial shear forces
-"RootFyb2"                - Blade 2 Root Oop, IP, and Axial shear forces
-"RootFzb2"                - Blade 2 Root Oop, IP, and Axial shear forces
-"RootMxb2"                - Blade 2 Root Oop, Ip, and Axial moments
-"RootMyb2"                - Blade 2 Root Oop, Ip, and Axial moments
-"RootMzb2"                - Blade 2 Root Oop, Ip, and Axial moments
-"RootFxb3"                - Blade 3 Root Oop, IP, and Axial shear forces
-"RootFyb3"                - Blade 3 Root Oop, IP, and Axial shear forces
-"RootFzb3"                - Blade 3 Root Oop, IP, and Axial shear forces
-"RootMxb3"                - Blade 3 Root Oop, Ip, and Axial moments
-"RootMyb3"                - Blade 3 Root Oop, Ip, and Axial moments
-"RootMzb3"                - Blade 3 Root Oop, Ip, and Axial moments
+"PtfmSurge"               - Platform translational surge, sway, and heave displacements
+"PtfmSway"                - Platform translational surge, sway, and heave displacements
+"PtfmHeave"               - Platform translational surge, sway, and heave displacements
+"PtfmRoll"                - Platform rotational roll, pitch and yaw displacements
+"PtfmPitch"               - Platform rotational roll, pitch and yaw displacements
+"PtfmYaw"                 - Platform rotational roll, pitch and yaw displacements
+"PtfmRVxt"                - Platform roll tilt angular (rotational) velocity
+"PtfmRVyt"                - Platform pitch tilt angular (rotational) velocity
+"PtfmRVzt"                - Platform yaw angular (rotational) velocity
+"PtfmTAxt"                - Platform translation accelerations (absolute) in the tower-base coordinate system
+"PtfmTAyt"                - Platform translation accelerations (absolute) in the tower-base coordinate system
+"PtfmTAzt"                - Platform translation accelerations (absolute) in the tower-base coordinate system
+"RootFxc1"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 1
+"RootFyc1"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 1
+"RootFzc1"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 1
+"RootMxc1"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 1
+"RootMyc1"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 1
+"RootMzc1"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 1
+"RootFxc2"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 2
+"RootFyc2"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 2
+"RootFzc2"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 2
+"RootMxc2"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 2
+"RootMyc2"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 2
+"RootMzc2"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 2
+"RootFxc3"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 3
+"RootFyc3"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 3
+"RootFzc3"                - Out-of-plane shear, in-plane shear, and axial forces at the root of blade 3
+"RootMxc3"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 3
+"RootMyc3"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 3
+"RootMzc3"                - In-plane bending, out-of-plane bending, and pitching moments at the root of blade 3
+"Spn1MLxb1"               - Blade 1 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLyb1"               - Blade 1 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLzb1"               - Blade 1 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLxb2"               - Blade 2 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLyb2"               - Blade 2 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLzb2"               - Blade 2 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLxb3"               - Blade 3 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLyb3"               - Blade 3 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
+"Spn1MLzb3"               - Blade 3 local edgewise bending, flapwise bending, and pitching moments at span station 1 (approx. 50% span)
 "LSSTipMya"               - Rotating low-speed shaft y-bending moment at the shaft tip (teeter pin for 2-blader, apex of rotation for 3-blader)
 "LSSTipMza"               - Rotating low-speed shaft z-bending moment at the shaft tip (teeter pin for 2-blader, apex of rotation for 3-blader)
 "RotThrust"               - Rotor thrust                                at the main bearing
@@ -175,9 +191,6 @@ True          TabDelim    - Use tab delimiters in text tabular output file? (fla
 "LSSGagMya"               - Low-speed shaft  0-rotating bending moments at the main bearing
 "LSSGagMza"               - Low-speed shaft 90-rotating bending moments at the main bearing
 "RotPwr"                  - Rotor power (this is equivalent to the low-speed shaft power)
-"LSSGagMxs"		          - low-speed shaft torque constant along shaft
-"LSSGagMys"		          - Nonrotating low-speed shaft bending moment at the shaft's strain gage (shaft strain gage located by input ShftGagL)
-"LSSGagMzs"		          - Nonrotating low-speed shaft bending moment at the shaft's strain gage (shaft strain gage located by input ShftGagL)
 "HSShftTq"                - High-speed shaft torque (this is constant along the shaft)
 "YawBrFxp"                - Fore-aft shear     at the top of the tower (not rotating with nacelle yaw)
 "YawBrFyp"                - Side-to-side shear at the top of the tower (not rotating with nacelle yaw)
@@ -185,97 +198,20 @@ True          TabDelim    - Use tab delimiters in text tabular output file? (fla
 "YawBrMxp"                - Side-to-side bending, fore-aft bending, and yaw moments at the top of the tower (not rotating with nacelle yaw)
 "YawBrMyp"                - Side-to-side bending, fore-aft bending, and yaw moments at the top of the tower (not rotating with nacelle yaw)
 "YawBrMzp"                - Side-to-side bending, fore-aft bending, and yaw moments at the top of the tower (not rotating with nacelle yaw)
-"YawBrFxn, YawBrFyn, YawBrFzn"      -Tower Top nacelle oriented shears
-"YawBrMxn, YawBrMyn, YawBrMzn"	-Tower Top nacelle oriented tower-top / yaw bearing roll moment
 "YawBrTAxp"               -	Tower-top / yaw bearing fore-aft (translational) acceleration (absolute)
 "YawBrTAyp"               -	Tower-top / yaw bearing side-to-side (translational) acceleration (absolute)
-"YawBrTAzp"               - Tower-top/yaw bearing axial        (translational) acceleration (absolute)
-"TwHt1TDxt"
-"TwHt2TDxt"
-"TwHt3TDxt"
-"TwHt4TDxt"
-"TwHt5TDxt"
-"TwHt6TDxt"
-"TwHt7TDxt"
-"TwHt8TDxt"
-"TwHt9TDxt"
-"TwHt1TDzt"
-"TwHt2TDzt"
-"TwHt3TDzt"
-"TwHt4TDzt"
-"TwHt5TDzt"
-"TwHt6TDzt"
-"TwHt7TDzt"
-"TwHt8TDzt"
-"TwHt9TDzt"
-"TwHt1RDyt"
-"TwHt2RDyt"
-"TwHt3RDyt"
-"TwHt4RDyt"
-"TwHt5RDyt"
-"TwHt6RDyt"
-"TwHt7RDyt"
-"TwHt8RDyt"
-"TwHt9RDyt"
-"TwHt1MLxt"
-"TwHt1MLyt"
-"TwHt1MLzt"
-"TwHt1FLxt"
-"TwHt1FLyt"
-"TwHt1FLzt"
-"TwHt2MLxt"
-"TwHt2MLyt"
-"TwHt2MLzt"
-"TwHt2FLxt"
-"TwHt2FLyt"
-"TwHt2FLzt"
-"TwHt3MLxt"
-"TwHt3MLyt"
-"TwHt3MLzt"
-"TwHt3FLxt"
-"TwHt3FLyt"
-"TwHt3FLzt"
-"TwHt4MLxt"
-"TwHt4MLyt"
-"TwHt4MLzt"
-"TwHt4FLxt"
-"TwHt4FLyt"
-"TwHt4FLzt"
-"TwHt5MLxt"
-"TwHt5MLyt"
-"TwHt5MLzt"
-"TwHt5FLxt"
-"TwHt5FLyt"
-"TwHt5FLzt"
-"TwHt6MLxt"
-"TwHt6MLyt"
-"TwHt6MLzt"
-"TwHt6FLxt"
-"TwHt6FLyt"
-"TwHt6FLzt"
-"TwHt7MLxt"
-"TwHt7MLyt"
-"TwHt7MLzt"
-"TwHt7FLxt"
-"TwHt7FLyt"
-"TwHt7FLzt"
-"TwHt8MLxt"
-"TwHt8MLyt"
-"TwHt8MLzt"
-"TwHt8FLxt"
-"TwHt8FLyt"
-"TwHt8FLzt"
-"TwHt9MLxt"
-"TwHt9MLyt"
-"TwHt9MLzt"
-"TwHt9FLxt"
-"TwHt9FLyt"
-"TwHt9FLzt"
 "TwrBsFxt"                - Fore-aft shear, side-to-side shear, and vertical forces at the base of the tower (platform)
 "TwrBsFyt"                - Fore-aft shear, side-to-side shear, and vertical forces at the base of the tower (platform)
 "TwrBsFzt"                - Fore-aft shear, side-to-side shear, and vertical forces at the base of the tower (platform)
 "TwrBsMxt"                - Side-to-side bending, fore-aft bending, and yaw moments at the base of the tower (platform)
 "TwrBsMyt"                - Side-to-side bending, fore-aft bending, and yaw moments at the base of the tower (platform)
 "TwrBsMzt"                - Side-to-side bending, fore-aft bending, and yaw moments at the base of the tower (platform)
+"RootMyb1"
+"NcIMUTVxs"
 END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
----------------------------------------------------------------------------------------
+---------------------- NODE OUTPUTS --------------------------------------------
+          1   BldNd_BladesOut  - Blades to output
+         99   BldNd_BlOutNd   - Blade nodes on each blade (currently unused)
+              OutList     - The next line(s) contains a list of output parameters.  See OutListParameters.xlsx, ElastoDyn_Nodes tab for a listing of available output channels, (-)
+END of input file (the word "END" must appear in the first 3 columns of this last OutList line)
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
