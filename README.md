@@ -48,22 +48,25 @@ In particular the following subpackages of welib:
 - ws\_estimator: wind speed estimator for wind energy based on tabulated Cp Ct
 
 
-Some of the packages have dependency with the [weio](http://github.com/ebranlard/weio/) library to read and write files.
-
 
 ## How to cite:
 
-The core of the model for onshore application is given in the following article:   
+The core of the model for **onshore** application is given in the following article:   
 
 - Branlard,E, Giardina, D., Brown, C. S. , *Augmented Kalman filter with a reduced mechanical model to estimate tower loads on a land-based wind turbine: a step towards digital-twin simulations*, 2020 [link](https://doi.org/10.5194/wes-5-1155-2020)
 
+The core of the model for **floatting offshore** application is given in the following article:   
+
+- Branlard, E., Jonkman, J., Brown, C., and Zhang, J.: *A digital-twin solution for floating offshore wind turbines validated using a full-scale prototype*, 2023, Wind Energ. Sci., [link](https://doi.org/10.5194/wes-2023-50)
 
 Applications using OpenFAST linearization were presented in the following work:
 
 - Branlard,E, Jonkman, J., Dana, S., Doubrawa, P., *A digital twin based on OpenFAST linearizations for real-time load and fatigue estimation of land-based turbines*, 2020 [link](https://iopscience.iop.org/article/10.1088/1742-6596/1618/2/022030)
 
 
-The structural model referred to as YAMS was described in the following:
+The **structural model** referred to as YAMS was described in the following:
+
+- Branlard, E., Geisler, J., *A symbolic framework to obtain mid-fidelity models of flexible multibody systems with application to horizontal-axis wind turbines*, 2022, Wind Energ. Sci., [link](https://doi.org/10.5194/wes-7-2351-2022)
 
  - Branlard,E, *Flexible multibody dynamics using joint coordinates and the Rayleigh‐Ritz approximation: The general framework behind and beyond Flex* , 2019, [link](https://onlinelibrary.wiley.com/doi/abs/10.1002/we.2327). A pre-print of this article is available in the `_doc` folder of this repository.
 

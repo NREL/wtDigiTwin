@@ -1,10 +1,12 @@
 from setuptools import setup, find_packages
 
+VERSION='1.0'
+
 setup(
     name='wtDigiTwin',
-    version='1.0',
+    version=VERSION,
     description='wtDigiTwin a digital twin model based on YAMS',
-    url='http://github.com/ebranlard/yams/',
+    url='https://github.com/NREL/wtDigiTwin',
     author='Emmanuel Branlard',
     author_email='lastname@gmail.com',
     license='MIT',
