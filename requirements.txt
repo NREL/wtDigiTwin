@@ -5,5 +5,5 @@ scipy
 future
 chardet
 sympy
-#welib
+#welib == 1.0.0
 
